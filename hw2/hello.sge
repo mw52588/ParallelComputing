@@ -1,0 +1,11 @@
+#!/bin/sh
+#
+# Usage: qsub hello.sge
+#$ -S /bin/sh
+#$ -pe orte 4 # Specify how many processors we want
+# -- our name ---
+#$ -N Hello # Name for the job
+#$ -l h_rt=00:01:00 # Request 1 minute to execute
+#$ -cwd # Make sure that the .e and .o file arrive in the working directory
+#$ -j y # Merge the standard out and standard error to one file
+mpirun -np $NSLOTS ./hello
